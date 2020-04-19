@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form action="{{ url_for('PostReq') }}" , method="POST">
+	<input type="text" name="title"><br><br>
+	<textarea rows="4" cols="50" name='des'>	</textarea>
+
+	<br><br>
+	<select id="" name="cat">
+		<option value="">temp1</option>
+		<option value="">temp2</option>
+	</select>
+		<select id="" name="subcat">
+		<option value="">temp1</option>
+		<option value="">temp2</option>
+	</select><br><br>
+	<input type="date" name="start">
+	<input type="date" name="end">
+	<input type="number" id="num"  name="rewardNum" >
+	<button  class="btn btn-primary" type="button" onClick="val()">Set Num Rewards</button>
+	<div id="app">
+		
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+<script type="text/javascript">
+	function val(){
+		var v=document.getElementById('num').value;
+		console.log(v);
+		document.getElementById('app').innerHTML="";
+		for(var i=1;i<=v;i++){
+			var inp=document.createElement("input");
+			inp.setAttribute("id","num"+i);
+			inp.setAttribute("name","rewards"+i)
+			inp.setAttribute("type","number");
+            document.getElementById("app").appendChild(inp)
+		}
+	}
+</script>
+</body>
+</html>

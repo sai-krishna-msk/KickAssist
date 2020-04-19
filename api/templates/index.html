@@ -1,0 +1,89 @@
+
+
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+<!-- Enter the title of the campaign -->
+<div class="md-form">
+  <input type="text" id="form1" class="form-control">
+  <label for="form1">Enter the title</label>
+</div>
+
+<!--Enter the description of the campiagn-->
+<div class="md-form md-outline">
+  <textarea id="form75" class="md-textarea form-control" rows="3"></textarea>
+  <label for="form75">Enter the description</label>
+</div>
+    
+
+<!-- Starting Date -->
+<div class="form">
+  <label for="example-date-input" class="col-form-label">Starting Date</label>
+
+    <input class="form-control" type="date" value="" id="example-date-input">
+
+</div>
+
+<!-- Ending Date --> 
+<div class="form">
+  <label for="example-date-input" class="col-form-label">Ending  Date</label>
+
+    <input class="form-control" type="date" value="" id="example-date-input">
+
+</div>
+
+<!-- Delivery Date -->
+<div class="form">
+  <label for="example-date-input" class="col-form-label">Starting Date</label>
+
+    <input class="form-control" type="date" value="" id="example-date-input">
+
+</div>
+
+<!-- Category -->
+<div class="dropdown">
+  <!--Trigger-->
+  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenu2-1"
+    data-toggle="dropdown">Material
+    search</button>
+
+  <!--Menu-->
+  <div class="dropdown-menu dropdown-danger" id="your-custom-id-material">
+    <!-- Search form -->
+    <div class="md-form">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </div>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://mdbootstrap.com/">MDB</a>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://mdbootstrap.com/docs/react/">MDB react</a>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://mdbootstrap.com/docs/angular/">MDB angular</a>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://mdbootstrap.com/docs/vue/">MDB vue</a>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://brandflow.net/">BrandFlow</a>
+    <a class="dropdown-item mdb-dropdownLink-2" href="https://mdbootstrap.com/education/bootstrap/">MDB
+      Rocks</a>
+  </div>
+</div>
+<script>
+    $('#your-custom-id-material').mdbDropSearch();
+</script>
+
+<!-- Sub Category -->
+
+<!-- Rewards -->
+
+<!-- Country -->
+
+
+</body>
+</html>
