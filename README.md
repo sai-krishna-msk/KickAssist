@@ -112,7 +112,7 @@ A model with 80% accuracy(given balanced dataset) seems to be an acceptable as W
 
 ## Methodology and results
 
-*All the code and a clear procedure is provided [here]()*
+*All the code and a clear procedure is provided [here](https://github.com/sai-krishna-msk/KickAssist/tree/master/notebooks)*
 
 1. Extracting the data from the source into a suitable form
 
