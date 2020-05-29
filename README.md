@@ -117,7 +117,7 @@ A model with 80% accuracy(given balanced dataset) seems to be an acceptable as W
 
 8. Modeling is performed  at this stage as we discussed we can not perform feature transformation in a way that would make our model un-interpretable but as we clearly made a distinction between fixed variables and flexible variables above, we've seen that we do not need fix variables to be interpretable as they would be fixed and subjected to no change by the creator so we try  different feature encoding techniques on fixed variables, finally we get an accuracy of 86% using XGboost with helmert encoding for a subset of features
 
-![img](images/model.png)
+![img](images/model.PNG)
 
 9. ELI5 packages which uses LIME algorithm over our model to generate feature importance for prediction of each instance,
 
