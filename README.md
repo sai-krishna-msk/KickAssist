@@ -88,39 +88,44 @@ A model with 80% accuracy(given balanced dataset) seems to be an acceptable as W
 
 1. Extracting the data from the source into a suitable form
 
-1. Exploring the variables, dealing with null and unusual values
+2. Exploring the variables, dealing with null and unusual values
 
-1. Performing basic preprocessing(Label Encoding, OneHot Encoding) and modeling
+3. Performing basic preprocessing(Label Encoding, OneHot Encoding) and modeling
 
-1. As we identify Features present in our data source are not suffice to full fill our objective due to the following reasons
+4. As we identify Features present in our data source are not suffice to full fill our objective due to the following reasons
 
 - - As we identified in our domain knowledge that rewards is an important feature, there is no feature indicating any measure of rewards in the dataset
   - Crossing 80% does not seem possible without it
 
-1. So We scrape the data of about 2,00,000 projects from the website for the following features
+5. So We scrape the data of about 2,00,000 projects from the website for the following features
 
-2. - Rewards
+   - Rewards
+
    - Number of Campaigns the Creator already had
+
    - Number of Campaigns the creator has already funded
+
    - When would the rewards be delivered
 
-1. As learnt in the domain knowledge section, marketing and networking increases the chances of success since we do not have any direct way of extracting that information we use "number of campaigns creator has already launched" as a proxy indicator of this measure
+     
 
-![img]()
+6. As learnt in the domain knowledge section, marketing and networking increases the chances of success since we do not have any direct way of extracting that information we use "number of campaigns creator has already launched" as a proxy indicator of this measure
 
-1. Finally after collecting all the data required for our objective we go ahead with Exploratory Data Analysis(EDA), in which we discover some valuable insights and get to perform statistical test to quantify significance of our assumptions
+![img](images/heroku.png)
 
-1. Modeling is performed  at this stage as we discussed we can not perform feature transformation in a way that would make our model un-interpretable but as we clearly made a distinction between fixed variables and flexible variables above, we've seen that we do not need fix variables to be interpretable as they would be fixed and subjected to no change by the creator so we try  different feature encoding techniques on fixed variables, finally we get an accuracy of 86% using XGboost with helmert encoding for a subset of features
+7. Finally after collecting all the data required for our objective we go ahead with Exploratory Data Analysis(EDA), in which we discover some valuable insights and get to perform statistical test to quantify significance of our assumptions
 
-![img]()
+8. Modeling is performed  at this stage as we discussed we can not perform feature transformation in a way that would make our model un-interpretable but as we clearly made a distinction between fixed variables and flexible variables above, we've seen that we do not need fix variables to be interpretable as they would be fixed and subjected to no change by the creator so we try  different feature encoding techniques on fixed variables, finally we get an accuracy of 86% using XGboost with helmert encoding for a subset of features
 
-1. ELI5 packages which uses LIME algorithm over our model to generate feature importance for prediction of each instance,
+![img](images/model.png)
 
-![img]()
+9. ELI5 packages which uses LIME algorithm over our model to generate feature importance for prediction of each instance,
 
-1. XGboost model and ELI5 model are embedded in a Dash(plotly) app to build a dashboard which shows an interactive waterfall plot where creators can modify different features to see which feature needs to be altered for high probability of success, Dashboard can be viewed [here](https://kick-assist.herokuapp.com/)
+![img](images/eli5.png)
 
-![img]()
+10. XGboost model and ELI5 model are embedded in a Dash(plotly) app to build a dashboard which shows an interactive waterfall plot where creators can modify different features to see which feature needs to be altered for high probability of success, Dashboard can be viewed [here](https://kick-assist.herokuapp.com/)
+
+![img](images/dashboard.png)
 
 # Limitations
 
