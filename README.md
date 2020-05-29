@@ -10,7 +10,7 @@
 
 
 
-**Dashboard can be accessed be [Here](https://kick-assist.herokuapp.com/)**
+### **Dashboard can be accessed be [Here](https://kick-assist.herokuapp.com/)**
 
 ## Introduction
 
