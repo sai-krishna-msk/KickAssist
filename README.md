@@ -1,3 +1,6 @@
+<img src="images/kickassist.jpg">
+
+
 # **Contents**
 
 1. **Introduction**
