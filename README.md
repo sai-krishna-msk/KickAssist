@@ -3,16 +3,17 @@
 
 # **Contents**
 
-1. **Introduction**
-2. **Methodology and results**
-3. **Limitations**
-4. **Reproduce the results**
+1. **Introduction/Context**
+2. **Objective**
+3. **Domain Knowledge**
+4. **Data Source**
+5. **Framing into ML Problem**
+6. **Methodology and results**
+7. **Limitations**
 
-**Dashboard can be accessed be** [**Here**](https://kick-assist.herokuapp.com/)
+<hr>
 
-# Introduction
-
-## Context
+# Introduction/Context
 
 KickStarter is a crowd funding platform for ideas and projects of diverse categories such as films, games, and music to art, design, and technology.
 
@@ -26,7 +27,9 @@ Individuals/Entrepreneurs  with ideas or products start a campaign by creating a
 
 - So it is more like people bringing the project to life which makes it interesting
 
-## Objective
+<hr>
+
+# Objective
 
 As discussed above there are a few decisions which creator needs to make when starting the campaign, Which include the following
 
@@ -38,11 +41,13 @@ As discussed above there are a few decisions which creator needs to make when st
 
 - Deciding the right amount for the rewards
 
-Since it is **all-or-nothing funding model** decisions we take with the above variables play a key role in deciding the success of the project
+Since it is **all-or-nothing funding model** decisions creator takes with the above variables play a key role in deciding the success of the project
 
 **Therefore our objective is to Assist the creator of the campaign in deciding what would be the optimal values for the above 4 features which would maximize the probability of a successful campaign based on certain characteristics of the product**
 
-## Domain Knowledge
+<hr>
+
+# Domain Knowledge
 
 Condensing most of the content about what goes into a successful campaign can be summarized by the following 
 
@@ -53,7 +58,9 @@ Condensing most of the content about what goes into a successful campaign can be
 5. Feasible duration for the given goal
 6. Delivering the rewards without delay
 
-## Data Sources
+<hr>
+
+# Data Source
 
 A Web Crawler Platform named [Web Robots](https://webrobots.io/) has a few free data projects one of them happens to be kickstarter data, which is scrapped every month of the platform.
 
@@ -67,40 +74,41 @@ It provides a bunch of csv files with data loaded as dictionaries(JSON), Followi
 
 and a few other
 
-## Framing ML Problem
+<hr>
 
-Based on our objective and our data source, there are two kinds of features(variables)
+# Framing into ML Problem
 
-- Variables Which are related to our product itself and are fixed, can not be changed for the purpose of increasing the chances of success, variables like category, sub category etc. These variables can not be changed after we decide what our campaign is going to be because they are about the product of the campaign itself, For naming reasons lets call them fixed variables.
+- Based on our objective and our data source, there are two kinds of features(variables)
 
-- One's which are to be decided strategically  and which can(should) be altered if doing so increases our probability of being successfully funded, this type of variables include rewards, goal, deadline , launch date etc., Let's call them flexible variables
+-  Variables Which are related to our product itself and are fixed, can not be changed for the purpose of increasing the chances of success, variables like category, sub category etc. These variables can not be changed after we decide what our campaign is going to be because they are about the product of the campaign itself, For naming reasons lets call them fixed variables.
 
-As the target feature(success or failed) is a categorical feature, it will be a classification problem
+-  One's which are to be decided strategically  and which can(should) be altered if doing so increases our probability of being successfully funded, this type of variables include rewards, goal, deadline , launch date etc., Let's call them flexible variables
 
-**Since our objective is not to make predictions about the campaign's success based on the features rather suggesting the optimal features for maximum chances for success, this slight variation in our problem statement demands our Model to be interpretable**
+- As the target feature(success or failed) is a categorical feature, it will be a classification problem
 
-**Requirement for Interpretability doesn't only effect our choice of ML model but it essentially drives our Machine Learning pipeline from preprocessing to model deployment, It mainly effects our feature engineering process, where in we are bound not to make any transformations(like dimensionality reduction) to our variables which can result in high accuracy at the expense of un-interpretable features defying our purpose.**
+- **Since our objective is not to make predictions about the campaign's success based on the features rather suggesting the optimal features for maximum chances for success, this slight variation in our problem statement demands our Model to be interpretable**
 
-Our model would be served for end use as an I**nteractive dashboard**, Where the creators can tune/adjust both their fixed, flexible variables and visualize not only the probability of success but also, How has each of the flexible variables effected the probability this way he/she can adjust those variable's values to the closest plausible value to increase the chances for a successful campaign
+- **Requirement for Interpretability does not only effect our choice of ML model but it essentially drives our Machine Learning pipeline from preprocessing to model deployment, It mainly effects our feature engineering process, where in we are bound not to make any transformations(like dimensionality reduction) to our variables, Therefore accuracy/performance is the price to pay for interpretability **
 
-A model with 80% accuracy(given balanced dataset) seems to be an acceptable as We will be using the model for interpretation not directly its predictions
+- Model would be served to the end user as an **Interactive dashboard**, Where the creators can tune/adjust both their fixed, flexible variables and visualize not only the probability of success but also, How has each of the flexible variables effected the probability this way creators can adjust those variable's values to the closest plausible value to increase the chances for a successful campaign.
+
+- A model with 80% accuracy(given balanced dataset) seems to be an acceptable , as it e will be using the model for interpretation not the predictions themselves
+
+<hr>
 
 # Methodology and results
 
 *All the code and a clear procedure is provided* [*here*](https://github.com/sai-krishna-msk/KickAssist/tree/master/notebooks)
 
-1. Extracting the data from the source into a suitable form
+- Extracting the data  from the source mentioned above
 
-2. Exploring the variables, dealing with null and unusual values
+- Exploring the variables and getting the feel of the data.
+ 
+- Performed basic cleaning like removed null values(beyond a threshold) and duplicate values.
 
-3. Performing basic preprocessing(Label Encoding, OneHot Encoding) and modeling
+- Performed  basic preprocessing(Label Encoding, OneHot Encoding) and modeling
 
-4. As we identify Features present in our data source are not suffice to full fill our objective due to the following reasons
-
-- - As we identified in our domain knowledge that rewards is an important feature, there is no feature indicating any measure of rewards in the dataset
-  - Crossing 80% does not seem possible without it
-
-5. So We scrape the data of about 2,00,000 projects from the website for the following features
+-   As identified in the Introduction,  features present in the data source are not suffice to full fill our objective because  as identified in the  domain knowledge section,  rewards is an important feature and  there is no feature indicating any measure of rewards in the dataset and section also suggest marketing and networking increases the chances of success,  since we do not have any direct way of extracting that information for each campaign, therefore Scraping is performed on the kickstarter website and following are the features being scrapped from each campaign(200000 total)
 
    - Rewards
 
@@ -110,35 +118,36 @@ A model with 80% accuracy(given balanced dataset) seems to be an acceptable as W
 
    - When would the rewards be delivered
 
-     
+- Scrapped data and source data are merged
 
-6. As learnt in the domain knowledge section, marketing and networking increases the chances of success since we do not have any direct way of extracting that information we use "number of campaigns creator has already launched" as a proxy indicator of this measure
+- EDA along with Statical tests(t-test, ANOVA) are performed to validate various assumptions and questions,One of the important findings in this process  is data prior to 3-4 years to the current date can be considered  stale as it does not have similar patterns, It not only  helps us reduce our training size by a large factor but also when updating the model each year it need not be trained on aggregated data of all the previous years.
+ 
+- As discussed previously due to the interpretability  constraints, Transformations such as dimensionality reduction(PCA) and polynomial interactions can not  be performed,  but clear distinction has been made between our features as fixed and flexible,   Fixed variables are not required to be  interpretable according to our business objective therefore, Feature encoding is used on categorical variables of flexible type, Helmert is used as 
+ our categorical vairbale have a natural sense of order to them which is ideal case for helmert encoding
+![img](https://github.com/sai-krishna-msk/KickAssist/blob/master/images//model.PNG?raw=true)
 
-![img](images/heroku.png)
 
-7. Finally after collecting all the data required for our objective we go ahead with Exploratory Data Analysis(EDA), in which we discover some valuable insights and get to perform statistical test to quantify significance of our assumptions
+- At this stage modeling is performed, as the relationships are clearly not linear as observed in EDA, Random Forest and XGBoost are trained  and XGBoost is chosen as it produces highest accuracy of 86% and is compatible with the tool being used for interpretation
 
-8. Modeling is performed  at this stage as we discussed we can not perform feature transformation in a way that would make our model un-interpretable but as we clearly made a distinction between fixed variables and flexible variables above, we've seen that we do not need fix variables to be interpretable as they would be fixed and subjected to no change by the creator so we try  different feature encoding techniques on fixed variables, finally we get an accuracy of 86% using XGboost with helmert encoding for a subset of features
 
-![img](images/model.PNG)
+-   ELI5 package is used for interpreting the XGBoost Model, Which makes use of LIME algorithm, This implementation suits our objective as it generates feature contribution for each instance predicted, Allowing creators/users to experiment with various values of 
+variables 
+![img](https://github.com/sai-krishna-msk/KickAssist/blob/master/images/eli5.png?raw=true)
 
-9. ELI5 packages which uses LIME algorithm over our model to generate feature importance for prediction of each instance,
 
-![img](images/eli5.png)
+- Model(XGBoost) and ELI5 tool are  wrapped into an api so that it can serve dashboard built using plotly, App is  hosted on heroku for creators to validate and tune their decisions to maximize the probability of success, Dashboard can we accessed [here](https://kick-assist.herokuapp.com/)
 
-10. XGboost model and ELI5 model are embedded in a Dash(plotly) app to build a dashboard which shows an interactive waterfall plot where creators can modify different features to see which feature needs to be altered for high probability of success, Dashboard can be viewed [here](https://kick-assist.herokuapp.com/)
+![img](https://github.com/sai-krishna-msk/KickAssist/blob/master/images/dashboard.png?raw=true)
 
-![img](images/dashboard.png)
+<hr>
 
 # Limitations
 
-- We are not considering how good the product actually is
-- We are not considering how good the description and the overall presentation of the project is(description , images and videos)
-- We are not considering the experience of the person hosting the project (how many backed and how many pledged), Giving us insight into how can he market the product
-- We are not considering whether the product has been staff picked(as this happens after few days after the kickstarter campaign has been launched)
-- We are not considering the social media marketing it has gone through
-- We are not considering the general need for the product
-- We are not considering whether the tech used in the product is currently in trending if yes then how much
+-  Content such as videos and images used to present the project compel the donors to some degree and it's signal is not being taken into consideration
+-  Experience of the person hosting the project (how many backed and how many pledged) is not being taken into consideration which gives us an insight into, how well the creator can market is product 
+-  Utility and relevance of the overall product is not being quantified 
+
+<hr>
 
 # Reproducing the results
 
