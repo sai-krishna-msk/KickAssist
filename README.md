@@ -11,6 +11,8 @@
 6. **Methodology and results**
 7. **Limitations**
 
+**Dashboard can be accessed [here](https://kick-assist.herokuapp.com/)**
+
 <hr>
 
 # Introduction/Context
